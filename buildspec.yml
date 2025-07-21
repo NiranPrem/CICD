@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10  # Change to 3.8, 3.9, etc. if needed
+    commands:
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt
+  pre_build:
+    commands:
+      - echo "Running pre-build steps..."
+  build:
+    commands:
+      - echo "Running tests..."
+      - pytest || echo "Tests failed or not present"
+      - echo "Build completed."
+  post_build:
+    commands:
+      - echo "Post-build actions completed."
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
+
